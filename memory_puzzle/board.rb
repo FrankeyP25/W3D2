@@ -86,12 +86,13 @@ class Board
     def reveal(guessed_pos)
         card_inst = self[guessed_pos]
         card_value = card_inst.face_value
+        
         if !card_inst.face_up?
-            self[guessed_pos]
+            card_value
         end
     end
 
-    
+
 
 
 
