@@ -25,9 +25,9 @@ class Card
     end
 
 
-    # def to_s
+    def to_s
 
-    # end
+    end
 
 
     def ==(second_card_inst)
