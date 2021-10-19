@@ -2,6 +2,7 @@ require_relative "./card.rb"
 class Board
 
     attr_reader :grid
+    
     def initialize(board_length)
         raise "board_length has to be even" if !board_length.even?
         @size = board_length * board_length
@@ -41,4 +42,49 @@ class Board
             end
         end
     end
+
+
+    def render
+        # @grid.each do |sub_arr|
+        #     sub_arr.each do |card_inst|
+        #         print card_inst.face_value + " "
+        #     end
+        #     puts " "
+        # end
+        (0..@grid[0].length-1).each do |i| 
+            if i == 0
+                print "  " + i.to_s
+            else
+                print " " + i.to_s
+            end
+        end
+        puts
+        @grid.map.with_index do |sub_arr, i|
+            print i.to_s + " "
+            sub_arr.map do |card_inst|  
+                if card_inst.face_up?
+                    print card_inst.face_value + " "
+                else
+                    print "  "
+                end
+            end
+            puts
+        end
+    end
+
+    def won?
+        @grid.flatten.all? { |card_inst| card_inst.face_up? }
+    end
+
+    def reveal_all_cards
+        @grid.map do |sub_arr|
+            sub_arr.map { |card_inst| card_inst.reveal }
+        end
+    end
+
+    
+
+
+
+
 end
