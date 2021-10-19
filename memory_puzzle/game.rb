@@ -7,13 +7,15 @@ class Game
 
     def initialize(board_length)
         @board = Board.new(board_length)
-        @guessed_pos = HumanPlayer.new
+        @guessed_pos = nil
+        @player = HumanPlayer.new
 
     end
 
     def play
         while !@board.won?
-            
+            @board.render
+            requested_position = @player.get_position
 
 
 
