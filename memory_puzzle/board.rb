@@ -58,6 +58,7 @@ class Board
                 print " " + i.to_s
             end
         end
+
         puts
         @grid.map.with_index do |sub_arr, i|
             print i.to_s + " "
@@ -79,6 +80,14 @@ class Board
     def reveal_all_cards
         @grid.map do |sub_arr|
             sub_arr.map { |card_inst| card_inst.reveal }
+        end
+    end
+
+    def reveal(guessed_pos)
+        card_inst = self[guessed_pos]
+        card_value = card_inst.face_value
+        if !card_inst.face_up?
+            self[guessed_pos]
         end
     end
 
