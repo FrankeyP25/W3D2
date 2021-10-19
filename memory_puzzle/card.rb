@@ -30,13 +30,9 @@ class Card
     # end
 
 
-    # def ==(second_card_inst)
-
-    # end
-
-
-
-
+    def ==(second_card_inst)
+        self.face_value == second_card_inst.face_value
+    end
 
 
 end
